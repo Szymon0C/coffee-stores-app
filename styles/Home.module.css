@@ -16,13 +16,25 @@
   bottom: 10%;
   left: 10%;
   z-index: 1;
+  display: none;
+}
+
+.cardLayout {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  column-gap: 1.5rem;
+  row-gap: 1.5rem;
+}
+
+.card {
+  justify-content: center;
 }
 
 /** Breakpoints:
   sm: min-width: 640px;
   md: min-width: 768px;
   lg: min-width: 1024px;
-  xl: min-width: 1280px;
+  xl: min-width: 1280px; 
   2xl: min-width: 1536px;
 **/
 
@@ -36,12 +48,17 @@
     top: 5%;
     right: 3%;
     left: unset;
+    display: block;
   }
 
   .main {
     margin-top: 3rem /* 48px */;
     padding-left: 1.5rem /* 24px */;
     padding-right: 1.5rem /* 24px */;
+  }
+
+  .cardLayout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -70,5 +87,9 @@
     margin-top: 5rem /* 80px */;
     padding-left: 2rem /* 32px */;
     padding-right: 2rem /* 32px */;
+  }
+
+  .cardLayout {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

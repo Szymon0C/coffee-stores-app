@@ -3,12 +3,17 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Banner from "@/components/banner";
+import Card from "@/components/card";
+
+import coffeeStores from "../data/coffee-stores";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const handleOnBannerBtnClick = () => console.log("click");
 
 export default function Home() {
+  console.log(coffeeStores);
+
   return (
     <>
       <Head>
@@ -25,11 +30,22 @@ export default function Home() {
         <Image
           className={styles.logo}
           src="/static/coffee.png"
-          width={300}
-          height={400}
+          width={230}
+          height={300}
           alt=""
           title="Illustration by Icons 8 from Ouch!"
         />
+        <div className={styles.cardLayout}>
+          {coffeeStores.map(({ id, imgUrl, name }) => (
+            <Card
+              key={id}
+              name={name}
+              imgURL={imgUrl}
+              href={`coffee-store/${id}`}
+              className={styles.card}
+            />
+          ))}
+        </div>
       </main>
     </>
   );
