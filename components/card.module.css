@@ -4,13 +4,38 @@
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
   box-shadow: 0 0 transparent, 0 0 #0000, 0 0 transparent, 0 0 #0000,
     0 0 transparent;
-
   border-color: var(--text-white-100);
   border-radius: 0.75rem /* 12px */;
+  width: 150px;
+  -webkit-mask-image: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 1) 30%
+  );
+  mask-image: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 1) 30%
+  );
+
+  transition: all 0.7s;
+}
+
+.cardLink:hover {
+  width: 300px;
+  mask-image: none;
+  transition: all 0.7s;
+}
+
+.lastCardLink {
+  width: 300px;
+  mask-image: none;
 }
 
 .cardLink:hover img {
-  transform: scale(0.9);
+  width: 260px;
+  object-fit: cover;
+  transition: all 0.7s;
 }
 
 .container {
@@ -45,7 +70,14 @@
 
 .cardImage {
   border-radius: 0.75rem /* 12px */;
-  transition: transform 0.2s;
+  width: 130px;
+  object-fit: none;
+  object-position: 0% 1;
+  transition: all 0.7s;
+}
+
+.lastCardImage {
+  border-radius: 0.75rem /* 12px */;
   object-fit: cover;
 }
 

@@ -1,15 +1,18 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+import coffeeStore from "../../data/coffee-stores";
+
 const CoffeeStore = () => {
   const { query } = useRouter();
-  const { id } = query;
+  const { id: urlId } = query;
+  const coffee = coffeeStore.filter(({ id: coffeeId }) => coffeeId == urlId)[0];
+  const { name, websiteUrl, address, imgUrl, neighbourhood } = coffee;
 
   return (
     <div>
-      <span>{id}</span>
+      <h2>{name}</h2>
       <Link href={"/"}>Back to home</Link>
-      <Link href={"/coffee-store/lorem"}>go to special page</Link>
     </div>
   );
 };
