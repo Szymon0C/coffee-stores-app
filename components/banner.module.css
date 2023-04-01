@@ -15,7 +15,7 @@
 }
 
 .title1 {
-  color: rgb(163, 194, 226);
+  color: var(--text-white);
 }
 
 .title2 {

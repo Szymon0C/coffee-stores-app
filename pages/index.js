@@ -1,19 +1,22 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Banner from "@/components/banner";
 import Card from "@/components/card";
 
-import coffeeStores from "../data/coffee-stores";
+import coffeeStoresData from "../data/coffee-stores";
 
-const inter = Inter({ subsets: ["latin"] });
+export async function getStaticProps(context) {
+  return {
+    props: {
+      coffeeStores: coffeeStoresData,
+    },
+  };
+}
 
 const handleOnBannerBtnClick = () => console.log("click");
 
-export default function Home() {
-  console.log(coffeeStores);
-
+export default function Home({ coffeeStores }) {
   return (
     <>
       <Head>
@@ -35,17 +38,23 @@ export default function Home() {
           alt=""
           title="Illustration by Icons 8 from Ouch!"
         />
-        <div className={styles.cardLayout}>
-          {coffeeStores.map(({ id, imgUrl, name }) => (
-            <Card
-              key={id}
-              name={name}
-              imgURL={imgUrl}
-              href={`coffee-store/${id}`}
-              className={styles.card}
-            />
-          ))}
-        </div>
+        {coffeeStores.length > 0 && (
+          <>
+            <h2 className={styles.heading2}>Toronto stores</h2>
+            <div className={styles.cardLayout}>
+              {coffeeStores.map(({ id, imgUrl, name }, index) => (
+                <Card
+                  key={id}
+                  name={name}
+                  imgURL={imgUrl}
+                  href={`coffee-store/${id}`}
+                  className={styles.card}
+                  last={index === coffeeStores.length - 1}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </main>
     </>
   );
