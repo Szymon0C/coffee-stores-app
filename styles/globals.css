@@ -56,10 +56,7 @@ button {
   background-image: none;
   font-weight: 600;
 }
-button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-}
+
 /* glass-morphism */
 .glass {
   background: hsla(0, 0%, 100%, 0.4);

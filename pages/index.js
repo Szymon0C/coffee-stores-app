@@ -2,11 +2,11 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import Banner from "@/components/banner";
-import Card from "@/components/card";
 
 import coffeeStoresData from "../data/coffee-stores";
+import StoresGroup from "@/components/storesGroup";
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   return {
     props: {
       coffeeStores: coffeeStoresData,
@@ -38,23 +38,9 @@ export default function Home({ coffeeStores }) {
           alt=""
           title="Illustration by Icons 8 from Ouch!"
         />
-        {coffeeStores.length > 0 && (
-          <>
-            <h2 className={styles.heading2}>Toronto stores</h2>
-            <div className={styles.cardLayout}>
-              {coffeeStores.map(({ id, imgUrl, name }, index) => (
-                <Card
-                  key={id}
-                  name={name}
-                  imgURL={imgUrl}
-                  href={`coffee-store/${id}`}
-                  className={styles.card}
-                  last={index === coffeeStores.length - 1}
-                />
-              ))}
-            </div>
-          </>
-        )}
+        {coffeeStores.length > 0 && <StoresGroup coffeeStores={coffeeStores} />}
+        {coffeeStores.length > 0 && <StoresGroup coffeeStores={coffeeStores} />}
+        {coffeeStores.length > 0 && <StoresGroup coffeeStores={coffeeStores} />}
       </main>
     </>
   );
