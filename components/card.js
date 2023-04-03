@@ -6,9 +6,11 @@ import cls from "classnames";
 
 import styles from "./card.module.css";
 
-const Card = ({ name, imgURL, href, last }) => {
+const Card = ({ name, imgURL, href, last, hidden }) => {
   const [isHovering, setIsHovered] = useState(false);
-  const onMouseChange = () => setIsHovered((prev) => !prev);
+
+  const onMouseChange = () =>
+    setTimeout(() => setIsHovered((prev) => !prev), 200);
 
   const shortName = `${name.slice(0, 7)}...`;
 
@@ -16,7 +18,11 @@ const Card = ({ name, imgURL, href, last }) => {
     <Link
       href={href}
       className={
-        last ? cls(styles.cardLink, styles.lastCardLink) : styles.cardLink
+        hidden
+          ? styles.hidden
+          : last
+          ? cls(styles.cardLink, styles.lastCardLink)
+          : styles.cardLink
       }
       onMouseEnter={onMouseChange}
       onMouseLeave={onMouseChange}
